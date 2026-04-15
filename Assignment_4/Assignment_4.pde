@@ -20,6 +20,8 @@ void setup() {
   }
   
   level.get(2).get(0).colours.add(color(255,0,0));
+  level.get(2).get(0).s = true;
+  level.get(5).get(0).s = true;
   level.get(5).get(0).colours.add(color(0,0,255));
   level.get(2).get(0).source = true;
   level.get(5).get(0).source = true;
@@ -28,18 +30,22 @@ void setup() {
 
 
 void draw() {
-  
+  drawbackground();
   for (int i = 0; i < level.size() ; i++){
     for (int j = 0; j < level.get(i).size(); j++){
-      
-      if (level.get(i).get(j).source == false){
-        fill(200);
-        rect(i*100,j*100,100,100);
-      }
-      else{
-        fill(200,0,0);
-        rect(i*100,j*100,100,100);
-      }
+      level.get(i).get(j).drawCell(i, j);
     }
   }
+}
+
+void drawbackground() {
+  stroke(0);
+  strokeWeight(2);
+  for (int i = 0; i < level.size() ; i++){
+    for (int j = 0; j < level.get(i).size(); j++){
+      fill(200);
+      rect(i*100,j*100,100,100);
+    }
+  }
+  
 }
