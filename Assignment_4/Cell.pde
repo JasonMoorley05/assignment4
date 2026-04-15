@@ -1,11 +1,12 @@
 class Cell{
- boolean source;
- boolean n;
- boolean e;
- boolean s;
- boolean w;
- color colour;
- 
+  boolean tube;
+  boolean source;
+  boolean n;
+  boolean e;
+  boolean s;
+  boolean w;
+  color colour;
+   
  
  
  ArrayList<Integer> colours;
@@ -18,25 +19,31 @@ class Cell{
     w = west;
     colours = new ArrayList<Integer>();
     
+    tube = false;
+    
   }
   
   void drawCell(int x, int y){
     int xoffset = x * 100;
     int yoffset = y * 100;
     
-    colourcheck();
+    if (tube){
     
-    if (n){
-     rect(35 + xoffset, yoffset, 30, 35); 
-    }
-    if (e){
-     rect(65 + xoffset, 35 + yoffset, 35, 30); 
-    }
-    if (s){
-     rect(35 + xoffset, 65 + yoffset, 30, 35); 
-    }
-    if (w){
-     rect(xoffset, 35 + yoffset, 35, 30); 
+      colourcheck();
+      
+      if (n){
+       rect(35 + xoffset, yoffset, 30, 35); 
+      }
+      if (e){
+       rect(65 + xoffset, 35 + yoffset, 35, 30); 
+      }
+      if (s){
+       rect(35 + xoffset, 65 + yoffset, 30, 35); 
+      }
+      if (w){
+       rect(xoffset, 35 + yoffset, 35, 30); 
+      }
+    
     }
     
     if (source) {
